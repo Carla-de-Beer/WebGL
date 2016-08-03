@@ -6,4 +6,8 @@ Basic Shapes
 Outer Solar System
 Castaway
 
-![alt tag](Outer Solar System/outerSolarSystem.png?raw=true "Title")
+<p align="center">
+  <img src="Outer Solar System/outerSolarSystem.png" width="300px"/>
+</p>
+
+
