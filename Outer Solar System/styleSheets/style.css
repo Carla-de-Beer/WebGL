@@ -1,0 +1,150 @@
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: white;
+	/*
+	background: linear-gradient(180deg, #ccc 5%, #fff);
+	background-size: cover;
+	*/
+}
+
+p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 15px;
+	color: #77787E;
+	text-align: left;
+}
+
+h1 { 
+	font-family: Consolas, Helvetica, Arial, sans-serif;
+	color: #5A6BD3; 
+	font-size:32px;	
+	text-align: center;
+}
+
+.right_aligned label {
+    display: block;
+    float: left;
+    clear: left;
+    width: 600px;
+    padding-right: 20px;
+    text-align: right;
+	top: 900px;
+	margin-left: 72px;
+	line-height: 23px;
+}
+
+div#ShininessInput {	
+	position: absolute;
+	top:30px;
+	left:10px;
+	padding-top: 4px;
+	padding-left: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 13px;
+	color: #77787E;
+	text-align: left;
+}
+
+div#PointLightLocation {	
+	position: absolute;
+	top:30px;
+	left:200px;
+	padding-top: 4px;
+	padding-left: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 13px;
+	color: #77787E;
+	text-align: left;
+}
+
+div#PointLightSpecular {	
+	position: absolute;
+	top:30px;
+	left:410px;
+	padding-top: 4px;
+	padding-left: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 13px;
+	color: #77787E;
+	text-align: left;
+}
+
+div#PointLightDiffuse {	
+	position: absolute;
+	top:30px;
+	left:630px;
+	padding-top: 4px;
+	padding-left: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 13px;
+	color: #77787E;
+	text-align: left;
+}
+
+div#PointLightColour {	
+	position: absolute;
+	top:30px;
+	left:840px;
+	padding-top: 4px;
+	padding-left: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 13px;
+	color: #77787E;
+	text-align: left;
+}
+
+div#AmbientLightColour {	
+	position: absolute;
+	top:30px;
+	left:1070px;
+	padding-top: 4px;
+	padding-left: 2px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 13px;
+	color: #77787E;
+	text-align: left;
+}
+
+div#check {	
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight:bold;
+	font-size: 13px;
+	color: #77787E;
+	text-align: left;
+}
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 1px 0px 1px 1px;
+  margin: 10px 0px 0px 0px;
+  box-shadow: 0 0 5px #6187EA;
+  border: 1px solid #646161;
+  width: 150px; height: 23px;
+}
+
+input[type=button] {
+	padding:5px 15px;  border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #4098d3;
+    color: #77787E;
+ 	background-image: linear-gradient(to bottom, #F2F0F0, #D8D2D2);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#F2F0F0, endColorstr=#D8D2D2);
+}
+
+input[type="checkbox"] {
+
+}
