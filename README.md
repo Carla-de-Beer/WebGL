@@ -6,8 +6,8 @@ Basic Shapes
 Outer Solar System
 Castaway
 
-<p align="center">
-  <img src="Outer Solar System/outerSolarSystem.png" width="300px"/>
+<p align="left">
+  <img src="Outer Solar System/outerSolarSystem.png" width="450px"/>
 </p>
 
 
