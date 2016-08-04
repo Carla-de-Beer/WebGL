@@ -1,0 +1,106 @@
+.basicParaStyle, .basicParaStyle1, .basicParaStyle2, .basicParaStyle3 {
+  position: absolute;
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.basicParaStyle1 {
+  color: #666; }
+
+.basicParaStyle2, .basicParaStyle3 {
+  color: #444; }
+
+.basicParaStyle3 {
+  background: #EEE;
+  width: 160px; }
+
+.basicButtonStyle, .basicButtonStyle1, .basicButtonStyle2 {
+  position: absolute;
+  width: 100px; }
+
+.basicButtonStyle1 {
+  position: absolute;
+  width: 100px;
+  background: #bebfba; }
+
+.basicButtonStyle2 {
+  position: absolute;
+  width: 100px;
+  background: #EEE; }
+
+#para1 {
+  top: 5px;
+  left: 790px; }
+
+#para2 {
+  top: 150px;
+  left: 790px; }
+
+#para3 {
+  top: 305px;
+  left: 790px; }
+
+#para4 {
+  top: 460px;
+  left: 790px; }
+
+#para5 {
+  top: 495px;
+  left: 790px; }
+
+#para6 {
+  top: 530px;
+  left: 790px; }
+
+#para7 {
+  top: 565px;
+  left: 790px; }
+
+#isC {
+  top: 50px;
+  left: 790px; }
+
+#isT {
+  top: 85px;
+  left: 790px; }
+
+#isO {
+  top: 120px;
+  left: 790px; }
+
+#xRot {
+  top: 200px;
+  left: 790px; }
+
+#yRot {
+  top: 235px;
+  left: 790px; }
+
+#zRot {
+  top: 270px;
+  left: 790px; }
+
+#octoSpeedInc {
+  top: 355px;
+  left: 790px; }
+
+#octoSpeedDec {
+  top: 355px;
+  left: 960px; }
+
+#tetraSpeedInc {
+  top: 390px;
+  left: 790px; }
+
+#tetraSpeedDec {
+  top: 390px;
+  left: 960px; }
+
+#cubeSpeedInc {
+  top: 425px;
+  left: 790px; }
+
+#cubeSpeedDec {
+  top: 425px;
+  left: 960px; }
+
+/*# sourceMappingURL=style.css.map */

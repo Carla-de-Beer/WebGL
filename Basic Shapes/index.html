@@ -1,0 +1,258 @@
+<!-- Carla de Beer
+ 	 Created: February 2015
+ 	 Updated: August 2016 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Shapes</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="styleSheets/style.css">
+        <script id="vertex-shader" type="x-shader/x-vertex">
+
+            attribute vec4 vPosition;
+            attribute vec4 vColor;
+            varying vec4 fColor;
+
+            uniform vec3 theta;
+
+            void main() {
+                // Send only rotation angles and let vertex shader
+                // compute the model-view matrix
+
+                // Calculate sines and cosines of theta for each of
+                // the three axes in one computation.
+                vec3 angles = radians(theta);
+                vec3 c = cos(angles);
+                vec3 s = sin(angles);
+
+                // The matrices are column-major
+                mat4 rotX = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  c.x,  s.x, 0.0,
+                        0.0, -s.x,  c.x, 0.0,
+                        0.0,  0.0,  0.0, 1.0 );
+
+                mat4 rotY = mat4(
+                        c.y, 0.0, -s.y, 0.0,
+                        0.0, 1.0,  0.0, 0.0,
+                        s.y, 0.0,  c.y, 0.0,
+                        0.0, 0.0,  0.0, 1.0 );
+
+                mat4 rotZ = mat4(
+                        c.z, -s.z, 0.0, 0.0,
+                        s.z,  c.z, 0.0, 0.0,
+                        0.0,  0.0, 1.0, 0.0,
+                        0.0,  0.0, 0.0, 1.0 );
+
+                mat4 trans = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  1.0,  0.0, 0.0,
+                        0.0,  0.0,  1.0, 0.0,
+                        -0.45,  -0.45,  0.0, 1.0 );
+
+                fColor = vColor;
+                // Vertex shader takes homogenous coordinates
+                gl_Position = trans * rotZ * rotY * rotX * vPosition;
+            }
+
+        </script>
+
+        <script id="vertex-shaderTx" type="x-shader/x-vertex">
+
+            attribute vec4 vPositionTetrax;
+            attribute vec4 vColor;
+            varying vec4 fColor;
+            uniform vec3 phiT;
+
+            void main() {
+                vec3 anglesT = radians(phiT);
+
+                vec3 c = cos(anglesT);
+                vec3 s = sin(anglesT);
+
+                mat4 rotX = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  c.x,  s.x, 0.0,
+                        0.0, -s.x,  c.x, 0.0,
+                        0.0,  0.0,  0.0, 1.0 );
+
+                mat4 trans = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  1.0,  0.0, 0.0,
+                        0.0,  0.0,  1.0, 0.0,
+                        0.0,  0.5,  0.0, 1.0 );
+
+                fColor = vColor;
+                gl_Position = trans * rotX * vPositionTetrax;
+            }
+
+        </script>
+
+        <script id="vertex-shaderTy" type="x-shader/x-vertex">
+
+            attribute vec4 vPositionTetray;
+            attribute vec4 vColor;
+            varying vec4 fColor;
+            uniform vec3 phiT;
+
+            void main() {
+                vec3 anglesT = radians(phiT);
+                vec3 c = cos(anglesT);
+                vec3 s = sin(anglesT);
+
+                mat4 rotY = mat4(
+                        c.y, 0.0, -s.y, 0.0,
+                        0.0, 1.0,  0.0, 0.0,
+                        s.y, 0.0,  c.y, 0.0,
+                        0.0, 0.0,  0.0, 1.0 );
+
+                mat4 trans = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  1.0,  0.0, 0.0,
+                        0.0,  0.0,  1.0, 0.0,
+                        0.0,  0.5,  0.0, 1.0 );
+
+
+                fColor = vColor;
+                gl_Position = trans * rotY * vPositionTetray;
+            }
+
+        </script>
+
+        <script id="vertex-shaderTz" type="x-shader/x-vertex">
+
+            attribute vec4 vPositionTetraz;
+            attribute vec4 vColor;
+            varying vec4 fColor;
+            uniform vec3 phiT;
+
+            void main() {
+                vec3 anglesT = radians(phiT);
+
+                vec3 c = cos(anglesT);
+                vec3 s = sin(anglesT);
+
+                mat4 rotZ = mat4(
+                        c.z, -s.z, 0.0, 0.0,
+                        s.z,  c.z, 0.0, 0.0,
+                        0.0,  0.0, 1.0, 0.0,
+                        0.0,  0.0, 0.0, 1.0 );
+
+                mat4 trans = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  1.0,  0.0, 0.0,
+                        0.0,  0.0,  1.0, 0.0,
+                        0.0,  0.5,  0.0, 1.0 );
+
+                fColor = vColor;
+                gl_Position = trans * rotZ * vPositionTetraz;
+            }
+
+        </script>
+
+        <script id="vertex-shaderO" type="x-shader/x-vertex">
+
+            attribute vec4 vPositionOcto;
+            attribute vec4 vColor;
+            varying vec4 fColor;
+            uniform vec3 phi;
+            uniform mat4 modelViewMatrix;
+
+            void main() {
+                // Send only rotation angles and let vertex shader
+                // compute the model-view matrix
+
+                vec3 anglesO = radians(phi);
+
+                vec3 c = cos(anglesO);
+                vec3 s = sin(anglesO);
+
+                // The matrices are column-major
+                mat4 rotX = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  c.x,  s.x, 0.0,
+                        0.0, -s.x,  c.x, 0.0,
+                        0.0,  0.0,  0.0, 1.0 );
+
+                mat4 rotY = mat4(
+                        c.y, 0.0, -s.y, 0.0,
+                        0.0, 1.0,  0.0, 0.0,
+                        s.y, 0.0,  c.y, 0.0,
+                        0.0, 0.0,  0.0, 1.0 );
+
+                mat4 rotZ = mat4(
+                        c.z, -s.z, 0.0, 0.0,
+                        s.z,  c.z, 0.0, 0.0,
+                        0.0,  0.0, 1.0, 0.0,
+                        0.0,  0.0, 0.0, 1.0 );
+
+                mat4 trans = mat4(
+                        1.0,  0.0,  0.0, 0.0,
+                        0.0,  1.0,  0.0, 0.0,
+                        0.0,  0.0,  1.0, 0.0,
+                        0.4,  -0.3,  0.5, 1.0 );
+
+                fColor = vColor;
+                // Vertex shader takes homogenous coordinates
+                gl_Position =  trans * rotY  * vPositionOcto;
+            }
+
+        </script>
+
+        <script id="fragment-shader" type="x-shader/x-fragment">
+
+            precision mediump float;
+
+            varying vec4 fColor;
+
+            void
+            main() {
+                gl_FragColor = fColor;
+            }
+
+        </script>
+
+        <script type="text/javascript" src="scriptFiles/objects.js"></script>
+        <script type="text/javascript" src="scriptFiles/matrixCalcs.js"></script>
+        <script type="text/javascript" src="scriptFiles/InitShaders.js"></script>
+
+    </head>
+
+    <body>
+    <canvas id="gl-canvas" width="755" height="755">
+        Your browser doesn't support the HTML5 canvas element
+    </canvas>
+
+    <br><br>
+
+    <div>
+        <p id="para1" class="basicParaStyle1"><i>Toggle shapes on and off:</i></p>
+
+        <button id="isC" class="basicButtonStyle1">Cube on/off</button>
+        <button id="isT" class="basicButtonStyle1">Tetra on/off</button>
+        <button id="isO" class="basicButtonStyle1">Octo on/off</button>
+
+        <p id="para2" class="basicParaStyle1"><i>Cube rotation controls:</i></p>
+
+        <button id="xRot" class="basicButtonStyle2">Rotate X</button>
+        <button id="yRot" class="basicButtonStyle2">Rotate Y</button>
+        <button id="zRot" class="basicButtonStyle2">Rotate Z</button>
+
+        <p id="para3" class="basicParaStyle1"><i>Rotation speed controls:</i></p>
+
+         <button id="octoSpeedInc" class="basicParaStyle3">Increase octo speed</button>
+         <button id="octoSpeedDec" class="basicParaStyle3">Decrease octo speed</button>
+         <button id="tetraSpeedInc" class="basicParaStyle3">Increase tetra speed</button>
+         <button id="tetraSpeedDec" class="basicParaStyle3">Decrease tetra speed</button>
+         <button id="cubeSpeedInc" class="basicParaStyle3">Increase cube speed</button>
+         <button id="cubeSpeedDec" class="basicParaStyle3">Decrease cube speed</button>
+
+        <p id="para4" class="basicParaStyle1"><i>Notes:</i></p>
+        <p id="para5" class="basicParaStyle2">The cube is translated along the negative x-axis and negative y-axis</p>
+        <p id="para6" class="basicParaStyle2">The tetrahedron is translated along the positive y-axis</p>
+        <p id="para7" class="basicParaStyle2">The octahedron is translated along the positive x and z-axes, and the negative y-axis</p>
+    </div>
+
+    </body>
+</html>

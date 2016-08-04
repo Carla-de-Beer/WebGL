@@ -4,7 +4,6 @@ A selection of WebGL projects. The index.html file can be opened and viewed dire
 
 * Basic Shapes
 * Outer Solar System
-* Castaway
 
 <p align="left">
   <img src="Outer Solar System/outerSolarSystem.png" width="450px"/>
