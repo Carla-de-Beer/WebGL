@@ -6,11 +6,11 @@
 		return degrees * Math.PI / 180;
 	}
 
-	if(typeof Float32Array != "undefined") {
+	if(typeof Float32Array !== "undefined") {
 		var glMatrixArray = Float32Array;
 	}
 	else {
-		if(typeof WebGLFloatArray != "undefined") {
+		if(typeof WebGLFloatArray !== "undefined") {
 			glMatrixArray = WebGLFloatArray;
 		}
 		else{
@@ -19,7 +19,6 @@
 	}
 
 	window.getAnimationFrame = (function() {
-
 		if(window.requestAnimationFrame) {
 			return window.requestAnimationFrame;
 		}
@@ -39,15 +38,15 @@
 
 	var vec3 = {};
 
-	vec3.create=function() {
+	vec3.create = function() {
 		var newMtrx = new glMatrixArray(3);
 		return newMtrx;
 	};
 
-	vec3.set=function(a,b) {
-		b[0]=a[0];
-		b[1]=a[1];
-		b[2]=a[2];
+	vec3.set = function(a, b) {
+		b[0] = a[0];
+		b[1] = a[1];
+		b[2] = a[2];
 		return b
 	};
 
@@ -64,7 +63,7 @@
 	};
 
 	mat3.transpose = function(first, second) {
-		if(!second || first == second){
+		if(!second || first == second) {
 			var a = first[1];
 			var b = first[2];
 			var c = first[5];
@@ -77,16 +76,16 @@
 			first[7] = c;
 			return first
 		}
-			second[0] = first[0];
-			second[1] = first[3];
-			second[2] = first[6];
-			second[3] = first[1];
-			second[4] = first[4];
-			second[5] = first[7];
-			second[6] = first[2];
-			second[7] = first[5];
-			second[8] = first[8];
-			return second
+		second[0] = first[0];
+		second[1] = first[3];
+		second[2] = first[6];
+		second[3] = first[1];
+		second[4] = first[4];
+		second[5] = first[7];
+		second[6] = first[2];
+		second[7] = first[5];
+		second[8] = first[8];
+		return second
 	};
 
 	// -----------------------------------------------------------------------
@@ -122,14 +121,11 @@
 		newMtrx[1] = oldMtrx[1];
 		newMtrx[2] = oldMtrx[2];
 		newMtrx[3] = oldMtrx[3];
-
 		newMtrx[4] = oldMtrx[4];
 		newMtrx[5] = oldMtrx[5];
 		newMtrx[6] = oldMtrx[6];
 		newMtrx[7] = oldMtrx[7];
-
 		newMtrx[8] = oldMtrx[8];
-
 
 		return newMtrx;
 	};
@@ -211,6 +207,7 @@
 
 
 	mat4.toInverseMat3 = function(a, b) {
+
 		var c = a[0];
 		var d = a[1];
 		var e = a[2];
@@ -220,23 +217,28 @@
 		var i = a[8];
 		var j = a[9];
 		var k = a[10];
-		var l = k*f - h*j;
-		var o =-k*g + h*i;
-		var m = j*g - f*i;
-		var n = c*l + d*o + e*m;
+		var l = k * f - h * j;
+		var o =-k * g + h * i;
+		var m = j * g - f * i;
+		var n = c * l + d * o + e * m;
 
-		if(!n)return null;
+		if(!n) {
+			return null;
+		}
+
 		n = 1/n;
 		b||(b = mat3.create());
-		b[0] = l*n;
-		b[1] = (-k*d + e*j)*n;
-		b[2] = (h*d - e*f)*n;
-		b[3] = o*n;
-		b[4]=(k*c - e*i)*n;
-		b[5] = (-h*c + e*g)*n;
-		b[6] = m*n;
-		b[7] = (-j*c + d*i)*n;
-		b[8] = (f*c - d*g)*n;
+
+		b[0] = l * n;
+		b[1] = (-k * d + e * j) * n;
+		b[2] = (h * d - e * f) * n;
+		b[3] = o * n;
+		b[4]=(k * c - e * i) * n;
+		b[5] = (-h * c + e * g) * n;
+		b[6] = m * n;
+		b[7] = (-j * c + d * i) * n;
+		b[8] = (f * c - d * g) * n;
+
 		return b
 	};
 
@@ -261,40 +263,40 @@
 
 		a=a[15];
 
-		var A=b[0];
-		var B=b[1];
-		var t=b[2];
-		var u=b[3];
-		var v=b[4];
-		var w=b[5];
-		var x=b[6];
-		var y=b[7];
-		var z=b[8];
-		var C=b[9];
-		var D=b[10];
-		var E=b[11];
-		var q=b[12];
-		var F=b[13];
-		var G=b[14];
+		var A = b[0];
+		var B = b[1];
+		var t = b[2];
+		var u = b[3];
+		var v = b[4];
+		var w = b[5];
+		var x = b[6];
+		var y = b[7];
+		var z = b[8];
+		var C = b[9];
+		var D = b[10];
+		var E = b[11];
+		var q = b[12];
+		var F = b[13];
+		var G = b[14];
 
 		b=b[15];
 
-		c[0] = A*d + B*h + t*l + u*p;
-		c[1] = A*e + B*i + t*o + u*r;
-		c[2] = A*g + B*j + t*m + u*s;
-		c[3] = A*f + B*k + t*n + u*a;
-		c[4] = v*d + w*h + x*l + y*p;
-		c[5] = v*e + w*i + x*o + y*r;
-		c[6] = v*g + w*j + x*m + y*s;
-		c[7] = v*f + w*k + x*n + y*a;
-		c[8] = z*d + C*h + D*l + E*p;
-		c[9] = z*e + C*i + D*o + E*r;
-		c[10] = z*g + C*j + D*m + E*s;
-		c[11] = z*f + C*k + D*n + E*a;
-		c[12] = q*d + F*h + G*l + b*p;
-		c[13] = q*e + F*i + G*o + b*r;
-		c[14] = q*g + F*j + G*m + b*s;
-		c[15] = q*f + F*k + G*n + b*a;
+		c[0] = A * d + B * h + t * l + u * p;
+		c[1] = A * e + B * i + t * o + u * r;
+		c[2] = A * g + B * j + t * m + u * s;
+		c[3] = A * f + B * k + t * n + u * a;
+		c[4] = v * d + w * h + x * l + y * p;
+		c[5] = v * e + w * i + x * o + y * r;
+		c[6] = v * g + w * j + x * m + y * s;
+		c[7] = v * f + w * k + x * n + y * a;
+		c[8] = z * d + C * h + D * l + E * p;
+		c[9] = z * e + C * i + D * o + E * r;
+		c[10] = z * g + C * j + D * m + E * s;
+		c[11] = z * f + C * k + D * n + E * a;
+		c[12] = q * d + F * h + G * l + b * p;
+		c[13] = q * e + F * i + G * o + b * r;
+		c[14] = q * g + F * j + G * m + b * s;
+		c[15] = q * f + F * k + G * n + b * a;
 
 		return c
 	};
@@ -324,20 +326,20 @@
 		var alphaY = vector[1];
 		var alphaZ = vector[2];
 
-		mtrx[0] = mtrx[0]*alphaX;
-		mtrx[1] = mtrx[1]*alphaX;
-		mtrx[2] = mtrx[2]*alphaX;
-		mtrx[3] = mtrx[3]*alphaX;
+		mtrx[0] = mtrx[0] * alphaX;
+		mtrx[1] = mtrx[1] * alphaX;
+		mtrx[2] = mtrx[2] * alphaX;
+		mtrx[3] = mtrx[3] * alphaX;
 
-		mtrx[4] = mtrx[4]*alphaY;
-		mtrx[5] = mtrx[5]*alphaY;
-		mtrx[6] = mtrx[6]*alphaY;
-		mtrx[7] = mtrx[7]*alphaY;
+		mtrx[4] = mtrx[4] * alphaY;
+		mtrx[5] = mtrx[5] * alphaY;
+		mtrx[6] = mtrx[6] * alphaY;
+		mtrx[7] = mtrx[7] * alphaY;
 
-		mtrx[8] = mtrx[8]*alphaZ;
-		mtrx[9] = mtrx[9]*alphaZ;
-		mtrx[10] = mtrx[10]*alphaZ;
-		mtrx[11] = mtrx[11]*alphaZ;
+		mtrx[8] = mtrx[8] * alphaZ;
+		mtrx[9] = mtrx[9] * alphaZ;
+		mtrx[10] = mtrx[10] * alphaZ;
+		mtrx[11] = mtrx[11] * alphaZ;
 
 		return mtrx;
 	};
@@ -359,7 +361,7 @@
 		var g = mtrx[10];
 		var h = mtrx[11];
 
-		if(mtrx != otherMtrx && otherMtrx) {
+		if(mtrx !== otherMtrx && otherMtrx) {
 			otherMtrx[0] = mtrx[0];
 			otherMtrx[1] = mtrx[1];
 			otherMtrx[2] = mtrx[2];
@@ -385,7 +387,7 @@
 
 	// RotateY
 
-		mat4.rotateY = function(mtrx, theta, otherMtrx) {
+	mat4.rotateY = function(mtrx, theta, otherMtrx) {
 
 		var sine = Math.sin(theta);
 		var cosine = Math.cos(theta);
@@ -399,7 +401,7 @@
 		var g = mtrx[10];
 		var h = mtrx[11];
 
-		if(mtrx != otherMtrx && otherMtrx){
+		if(mtrx !== otherMtrx && otherMtrx){
 			otherMtrx[4] = mtrx[4];
 			otherMtrx[5] = mtrx[5];
 			otherMtrx[6] = mtrx[6];
@@ -439,7 +441,7 @@
 		var g = mtrx[6];
 		var h = mtrx[7];
 
-		if(mtrx != otherMtrx && otherMtrx) {
+		if(mtrx !== otherMtrx && otherMtrx) {
 			otherMtrx[8] = mtrx[8];
 			otherMtrx[9] = mtrx[9];
 			otherMtrx[10] = mtrx[10];
@@ -469,15 +471,15 @@
 
 		var x_axis = axisToRotate[0]; var y_axis = axisToRotate[1]; var z_axis = axisToRotate[2];
 
-		if(x_axis != 0) {
+		if(x_axis !== 0) {
 			return mat4.rotateX(mtrx, angle, mtrx);
 		}
 
-		if(y_axis != 0) {
+		if(y_axis !== 0) {
 			return mat4.rotateY(mtrx, angle, mtrx);
 		}
 
-		if(z_axis != 0) {
+		if(z_axis !== 0) {
 			return mat4.rotateZ(mtrx, angle, mtrx);
 		}
 	};
@@ -517,10 +519,10 @@
 		// 0    0 0 1
 		// with model-view mtrx
 
-		mtrx[8] = mtrx[8] + mtrx[4]*cotTheta;
-		mtrx[9] = mtrx[9] + mtrx[5]*cotTheta;
-		mtrx[10] = mtrx[10] + mtrx[6]*cotTheta;
-		mtrx[11] = mtrx[11] + mtrx[7]*cotTheta;
+		mtrx[8] = mtrx[8] + mtrx[4] * cotTheta;
+		mtrx[9] = mtrx[9] + mtrx[5] * cotTheta;
+		mtrx[10] = mtrx[10] + mtrx[6] * cotTheta;
+		mtrx[11] = mtrx[11] + mtrx[7] * cotTheta;
 
 		return mtrx;
 	};
@@ -533,14 +535,14 @@
 
 		// Shear on z is equal to shear in x and y
 
-		mtrx[4] = mtrx[4] + mtrx[0]*cotTheta;
-		mtrx[5] = mtrx[5] + mtrx[1]*cotTheta;
-		mtrx[6] = mtrx[6] + mtrx[2]*cotTheta;
-		mtrx[7] = mtrx[7] + mtrx[3]*cotTheta;
-		mtrx[8] = mtrx[8] + mtrx[4]*cotTheta;
-		mtrx[9] = mtrx[9] + mtrx[5]*cotTheta;
-		mtrx[10] = mtrx[10] + mtrx[6]*cotTheta;
-		mtrx[11] = mtrx[11] + mtrx[7]*cotTheta;
+		mtrx[4] = mtrx[4] + mtrx[0] * cotTheta;
+		mtrx[5] = mtrx[5] + mtrx[1] * cotTheta;
+		mtrx[6] = mtrx[6] + mtrx[2] * cotTheta;
+		mtrx[7] = mtrx[7] + mtrx[3] * cotTheta;
+		mtrx[8] = mtrx[8] + mtrx[4] * cotTheta;
+		mtrx[9] = mtrx[9] + mtrx[5] * cotTheta;
+		mtrx[10] = mtrx[10] + mtrx[6] * cotTheta;
+		mtrx[11] = mtrx[11] + mtrx[7] * cotTheta;
 
 		return mtrx;
 	};
@@ -557,31 +559,31 @@
 		var mtrxY = mat4.shearY(mtrx, theta);
 		var mtrxZ = mat4.shearZ(mtrx, theta);
 
-		if(axisX != 0) {
+		if(axisX !== 0) {
 			return mtrxX
 		}
 
-		else if(axisY != 0) {
+		else if(axisY !== 0) {
 			return mtrxY
 		}
 
-		else if(axisZ != 0) {
+		else if(axisZ !== 0) {
 			return mtrxZ
 		}
 
-		else if(axisX != 0 && axisY != 0 && axisZ == 0) {
+		else if(axisX !== 0 && axisY !== 0 && axisZ === 0) {
 			return mat4.matrixMultiply(mtrxX, mtrxY);
 		}
 
-		else if(axisX != 0 && axisZ != 0 && axisY == 0) {
+		else if(axisX !== 0 && axisZ !== 0 && axisY === 0) {
 			return mat4.matrixMultiply(mtrxX, mtrxZ);
 		}
 
-		else if(axisY != 0 && axisZ != 0 && axisX == 0) {
+		else if(axisY !== 0 && axisZ !== 0 && axisX === 0) {
 			return mat4.matrixMultiply(mtrxY, mtrxZ);
 		}
 
-		else if(axisY != 0 && axisZ != 0 && axisX != 0) {
+		else if(axisY !== 0 && axisZ !== 0 && axisX !== 0) {
 			var res = mat4.matrixMultiply(mtrxX, mtrxY);
 			return mat4.matrixMultiply(res, mtrxZ);
 		}
@@ -613,9 +615,9 @@
 		pMtrx[9] = 0;
 		pMtrx[10] = -2/c;
 		pMtrx[11] = 0;
-		pMtrx[12] = -1*(left + right)/a;
-		pMtrx[13] = -1*(top + bottom)/b;
-		pMtrx[14] = -1*(far + near )/c;
+		pMtrx[12] = -1 * (left + right)/a;
+		pMtrx[13] = -1 * (top + bottom)/b;
+		pMtrx[14] = -1 * (far + near )/c;
 		pMtrx[15] = 1;
 
 		return pMtrx;
@@ -636,11 +638,11 @@
 		var cotP = -1/Math.tan(p);
 
 		var a = 2/(right - left);
-		var b = -1*(right + left)/(right - left);
+		var b = -1 * (right + left)/(right - left);
 		var c = 2/(top - bottom);
-		var d = -1*(top + bottom)/(top - bottom);
+		var d = -1 * (top + bottom)/(top - bottom);
 		var e = 12/(far - near);
-		var f = -1*(far + near)/(far - near);
+		var f = -1 * (far + near)/(far - near);
 
 		pMtrx[0] = a;
 		pMtrx[1] = 0;
@@ -650,11 +652,11 @@
 		pMtrx[5] = c;
 		pMtrx[6] = 0;
 		pMtrx[7] = 0;
-		pMtrx[8] = -e*cotT;
-		pMtrx[9] = -e*cotP;
+		pMtrx[8] = -e * cotT;
+		pMtrx[9] = -e * cotP;
 		pMtrx[10] = e;
 		pMtrx[11] = 0;
-		pMtrx[12] = b - f*cotT;
+		pMtrx[12] = b - f * cotT;
 		pMtrx[13] = d = cotP;
 		pMtrx[14] = 0;
 		pMtrx[15] = 1;
@@ -671,8 +673,8 @@
 		top = near*Math.tan((top * Math.PI)/360);
 		right = top * right;
 
-		var left = -1*right;
-		var bottom = -1*top;
+		var left = -1 * right;
+		var bottom = -1 * top;
 		var a = right - left;
 		var b = top - bottom;
 		var c = far - near;
@@ -723,26 +725,26 @@
 		up = e - at[0];
 		j = g - at[1];
 		at = eye - at[2];
-		m = 1/Math.sqrt(up*up+j*j+at*at);
+		m = 1/Math.sqrt(up * up + j * j + at * at);
 		up *= m;
 		j *= m;
 		at *= m;
-		k = h*at - i*j;
-		i = i*up - f*at;
-		f = f*j - h*up;
+		k = h * at - i * j;
+		i = i * up - f * at;
+		f = f * j - h * up;
 
-		if(m = Math.sqrt(k*k+i*i+f*f)) {
+		if(m = Math.sqrt(k * k + i * i + f * f)) {
 			m = 1/m;
 			k *= m;
 			i *= m;
 			f *= m;
 		}
 		else f = i = k = 0;
-		h = j*f - at*i;
-		l = at*k - up*f;
-		o = up*i - j*k;
+		h = j * f - at * i;
+		l = at * k - up * f;
+		o = up * i - j * k;
 
-		if(m = Math.sqrt(h*h+l*l+o*o)) {
+		if(m = Math.sqrt(h * h + l * l + o * o)) {
 			m = 1/m;
 			h *= m;
 			l *= m;
@@ -762,9 +764,9 @@
 		pMtrx[9] = o;
 		pMtrx[10] = at;
 		pMtrx[11] = 0;
-		pMtrx[12] =-(k*e + i*g + f*eye);
-		pMtrx[13] =-(h*e + l*g + o*eye);
-		pMtrx[14] =-(up*e + j*g + at*eye);
+		pMtrx[12] =-(k * e + i * g + f * eye);
+		pMtrx[13] =-(h * e + l * g + o * eye);
+		pMtrx[14] =-(up * e + j * g + at * eye);
 		pMtrx[15] = 1;
 
 		return pMtrx
