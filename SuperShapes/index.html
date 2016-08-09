@@ -1,11 +1,15 @@
-<html>
 
+<!-- Carla de Beer
+     Created: August 2015 -->
+
+<html>
     <head>
         <title>WebGL Sphere</title>
         <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
         <link rel="stylesheet" type="text/css" href="styleSheets/style.css">
         <script type="text/javascript" src="scriptFiles/matrixCalcs.js"></script>
         <script type="text/javascript" src="scriptFiles/webgl-utils.js"></script>
+        <script type="text/javascript" src="scriptFiles/main.js"></script>
 
         <script id="shader-fs" type="x-shader/x-fragment">
             precision mediump float;
@@ -32,8 +36,6 @@
             }
         </script>
 
-        <script type="text/javascript" src="scriptFiles/main.js"></script>
-
     </head>
 
     <body onload="webGLStart();">
@@ -44,7 +46,6 @@
                 height="725">Your browser doesn't support the HTML5 canvas element</canvas>
 
         <p>Spin the sphere by dragging it with the mouse</p>
-
         <button id="translateBackButton">Translate Backwards</button>
         <button id="translateForwardButton">Translate Forwards</button>
 
