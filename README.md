@@ -4,6 +4,7 @@ A selection of WebGL projects. The index.html file can be opened and viewed dire
 
 * Basic Shapes
 * Outer Solar System
+* Perspective Ortho Oblique
 * Shere
 * SuperShapes
 
