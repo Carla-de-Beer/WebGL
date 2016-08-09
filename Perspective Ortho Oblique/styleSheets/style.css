@@ -1,0 +1,36 @@
+.basicButton {
+    position: absolute;
+    background: #EEE;
+    width: 130px;
+    color: #444;
+    left: 790px;
+}
+
+#isO_ON {
+    top: 50px;
+}
+
+#isP_ON {
+    top: 85px;
+}
+
+#isOb_ON {
+    top: 120px;
+}
+
+#inc {
+    top: 155px;
+}
+
+#dec {
+    top: 190px;
+}
+
+#para1 {
+    position: absolute;
+    top: 5px;
+    left:790px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #666;
+}

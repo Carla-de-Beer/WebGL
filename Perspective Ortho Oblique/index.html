@@ -1,0 +1,66 @@
+<!-- Carla de Beer
+     Created: April 2015
+     Updated: August 2016
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+        <title>Perspective, Ortho and Oblique</title>
+
+        <script type="text/javascript" src="scriptFiles/matrixCalcs.js"></script>
+        <script type="text/javascript" src="scriptFiles/webgl-utils.js"></script>
+        <script type="text/javascript" src="scriptFiles/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="styleSheets/style.css">
+
+        <script id="shader-fs" type="x-shader/x-fragment">
+
+            precision mediump float;
+
+            varying vec4 vColor;
+
+            void main(void)
+            {
+                gl_FragColor = vColor;
+            }
+
+        </script>
+
+        <script id="shader-vs" type="x-shader/x-vertex">
+
+            attribute vec3 aVertexPosition;
+            attribute vec4 aVertexColor;
+
+            uniform mat4 uMVMatrix;
+            uniform mat4 uPMatrix;
+
+            varying vec4 vColor;
+
+            void main(void)
+            {
+                gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+                vColor = aVertexColor;
+            }
+
+        </script>
+
+    </head>
+    <body onload="webGLStart()">
+        <canvas id="gl-canvas"
+                width="750"
+                height="750">Your browser doesn't support the HTML5 canvas element</canvas>
+        <br><br>
+
+        <div>
+            <div>
+                <p id="para1"><i>Toggle between projections:</i></p>
+                <button id="isO_ON" class="basicButton">Ortho on</button>
+                <button id="isP_ON" class="basicButton">Perspective on</button>
+                <button id="isOb_ON" class="basicButton">Oblique on</button>
+                <button id="inc" class="basicButton">Increase z-value</button>
+                <button id="dec" class="basicButton">Decrease z-value</button>
+            </div>
+        </div>
+    </body>
+</html>
