@@ -10,6 +10,7 @@
 
         <script type="text/javascript" src="scriptFiles/matrixCalcs.js"></script>
         <script type="text/javascript" src="scriptFiles/webgl-utils.js"></script>
+        <script type="text/javascript" src="scriptFiles/main.js"></script>
         <link rel="stylesheet" type="text/css" href="styleSheets/style.css">
 
         <style type="text/css" media="screen">
@@ -250,8 +251,6 @@
 
         </script>
 
-        <script type="text/javascript" src="scriptFiles/main.js"></script>
-
     </head>
 
     <body onLoad="webGLStart();">
@@ -260,34 +259,32 @@
         <br/>
 
         <div id="text">
-            <p style="position: absolute; top: 640px; left:160px; font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: #FFF;">The Outer Solar System</p>
+            <p id="para1">The Outer Solar System</p>
         </div>
 
         <div id="controls">
-            <button id="lighting" style="position: absolute; top: 735px; left: 140px; background: #EEE; width: 210px; height: 30px; color: #444;">Toggle: Use lighting</button>
-            <button id="specular" style="position: absolute; top: 735px; left: 358px; background: #EEE; width: 210px; height: 30px; color: #444;">
-                Toggle: Specular highlight</button>
-            <button id="bump" style="position: absolute; top: 735px; left: 794px; background: #EEE; width: 210px; height: 30px; color: #444;">Toggle: Saturn bump map</button>        <button id="phong" style="position: absolute; top: 735px; left: 576px; background: #EEE; width: 210px; height: 30px; color: #444;">
-            Toggle: Phong / Ambient-Point</button>
-
-            <p style="position: absolute; left: 140px; top: 685px; font-weight:normal; font-size: 14px">Use the arrow keys or the W-A-S-D keys to move around, and <code>Page Up</code>/<code>Page Down</code>
+            <button id="lighting" class="basic1">Toggle: Use lighting</button>
+            <button id="specular" class="basic1">Toggle: Specular highlight</button>
+            <button id="bump" class="basic1">Toggle: Saturn bump map</button>
+            <button id="phong" class="basic1">Toggle: Phong / Ambient-Point</button>
+            <p id="para2">Use the arrow keys or the W-A-S-D keys to move around, and <code>Page Up</code>/<code>Page Down</code>
                 to look up and down.</p>
         </div>
 
-        <div style="position: absolute; left: 140px; top: 795px; border: 1px solid #77787E; width: 1300px; height: 285px;">
-            <p style="position: absolute; left: 12px; top: 0px">LIGHTING CONTROLS</p>
+        <div id="div1">
+            <p id="para3">LIGHTING CONTROLS</p>
 
-            <div id="ShininessInput">
-                <p>Shininess</p>
-                <p style="font-weight:normal">(Phong only)</p>
+            <div id="ShininessInput" class="basic2">
+                <p id="para4">Shininess</p>
+                <p id="para5">(Phong only)</p>
                 <form id="inputForm1">
                     <input id="shininess" type="text" name="name" value="20.0">
                 </form>
             </div>
 
-            <div id="PointLightLocation">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point light: Location</p>
-                <p style="font-weight:normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Phong & Point Light)</p>
+            <div id="PointLightLocation" class="basic2">
+                <p id="para6" class="paraStyle3">Point light: Location</p>
+                <p id="para7" class="paraStyle2">(Phong & Point Light)</p>
                 <form id="inputForm2">
                     X:&nbsp;&nbsp;<input id="lightPositionX" type="text" name="name" value="-5">
                     <br><br>
@@ -297,9 +294,9 @@
                 </form>
             </div>
 
-            <div id="PointLightSpecular">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point light: Specular</p>
-                <p style="font-weight:normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Phong only)</p>
+            <div id="PointLightSpecular" class="basic2">
+                <p id="para8" class="paraStyle3">Point light: Specular</p>
+                <p id="para9" class="paraStyle2">(Phong only)</p>
                 <form >
                     R:&nbsp;&nbsp;<input id="specularR"  type="text" name="name" value="0.5">
                     <br><br>
@@ -309,9 +306,9 @@
                 </form>
             </div>
 
-            <div id="PointLightDiffuse">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point light: Diffuse</p>
-                <p style="font-weight:normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Phong only)</p>
+            <div id="PointLightDiffuse" class="basic2">
+                <p id="para10" class="paraStyle3">Point light: Diffuse</p>
+                <p id="para11" class="paraStyle2">(Phong only)</p>
                 <form >
                     R:&nbsp;&nbsp;<input id="diffuseR"  type="text" name="name" value="0.5">
                     <br><br>
@@ -321,9 +318,9 @@
                 </form>
             </div>
 
-            <div id="PointLightColour">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Point light: Colour</p>
-                <p style="font-weight:normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Phong & Point Light)</p>
+            <div id="PointLightColour" class="basic2">
+                <p id="para12">Point light: Colour</p>
+                <p id="para13">(Phong & Point Light)</p>
                 <form id="inputForm">
                     &nbsp;&nbsp;X:
                     &nbsp;&nbsp;<input id="pointR" type="text" name="name" value="0.8">
@@ -335,10 +332,10 @@
                 </form>
             </div>
 
-            <div id="AmbientLightColour">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ambient light: Colour</p>
-                <p style="font-weight:normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Phong & Point Light)</p>
-                <form >
+            <div id="AmbientLightColour" class="basic2">
+                <p id="para14" class="paraStyle3">Ambient light: Colour</p>
+                <p id="para15" class="paraStyle2">(Phong & Point Light)</p>
+                <form>
                     R:&nbsp;&nbsp;<input id="ambientR"  type="text" name="name" value="0.8">
                     <br><br>
                     G:&nbsp;&nbsp;<input id="ambientG" type="text" name="number" value="0.8">
@@ -346,7 +343,7 @@
                     B:&nbsp;&nbsp;<input id="ambientB" type="text" name="number" value="0.8">
                 </form>
             </div>
-            <p style="position: absolute; left: 12px; top: 270px">&nbsp;</p>
+            <p id="para16">&nbsp;</p>
         </div>
     </body>
 </html>

@@ -3,10 +3,6 @@ body {
 	padding: 0;
 	height: 100%;
 	background: white;
-	/*
-	background: linear-gradient(180deg, #ccc 5%, #fff);
-	background-size: cover;
-	*/
 }
 
 p {
@@ -15,111 +11,148 @@ p {
 	font-size: 15px;
 	color: #77787E;
 	text-align: left;
+    position: absolute;
 }
 
-h1 { 
-	font-family: Consolas, Helvetica, Arial, sans-serif;
-	color: #5A6BD3; 
-	font-size:32px;	
-	text-align: center;
+#para1 {
+    top: 640px;
+    left:160px;
+    font-size: 13px;
+    color: #FFF;
 }
 
-.right_aligned label {
-    display: block;
-    float: left;
-    clear: left;
-    width: 600px;
-    padding-right: 20px;
-    text-align: right;
-	top: 900px;
-	margin-left: 72px;
-	line-height: 23px;
+#para2 {
+    left: 140px;
+    top: 685px;
+    font-weight:normal;
+    font-size: 14px;
 }
 
-div#ShininessInput {	
-	position: absolute;
-	top:30px;
+#para3 {
+    left: 12px;
+    top: 0px;
+}
+
+#para4 {
+    position: relative;
+    left: 0px;
+}
+
+.paraStyle2 {
+    font-weight: normal;
+    position: relative;
+    left: 21px;
+    top: -3px;
+}
+
+.paraStyle3 {
+    position: relative;
+    left: 21px;
+}
+
+#para5 {
+    font-weight: normal;
+    position: relative;
+    left: 0px;
+    top: -3px;
+}
+
+#para12 {
+    position: relative;
+    left: 29px;
+}
+
+#para13 {
+    font-weight: normal;
+    position: relative;
+    left: 29px;
+    top: -3px;
+}
+
+#para16 {
+    left: 12px;
+    top: 270px;
+}
+
+.basic1 {
+    background: #EEE;
+    width: 210px;
+    height: 30px;
+    color: #444;
+}
+
+#lighting {
+    position: absolute;
+    top: 735px;
+    left: 140px;
+}
+
+#specular {
+    position: absolute;
+    top: 735px;
+    left: 358px;
+}
+
+#bump {
+    position: absolute;
+    top: 735px;
+    left: 794px;
+}
+
+#phong {
+    position: absolute;
+    top: 735px;
+    left: 576px;
+}
+
+#div1 {
+    position: absolute;
+    left: 140px;
+    top: 795px;
+    border: 1px solid #77787E;
+    width: 1300px;
+    height: 285px;
+}
+
+.basic2 {
+    position: absolute;
+    top:30px;
+    padding-top: 4px;
+    padding-left: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:bold;
+    font-size: 13px;
+    color: #77787E;
+    text-align: left;
+}
+
+div#ShininessInput {
 	left:10px;
-	padding-top: 4px;
-	padding-left: 2px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	font-size: 13px;
-	color: #77787E;
-	text-align: left;
 }
 
-div#PointLightLocation {	
-	position: absolute;
-	top:30px;
+div#PointLightLocation {
+    top:30px;
 	left:200px;
-	padding-top: 4px;
-	padding-left: 2px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	font-size: 13px;
-	color: #77787E;
-	text-align: left;
 }
 
-div#PointLightSpecular {	
-	position: absolute;
-	top:30px;
+div#PointLightSpecular {
+    top:30px;
 	left:410px;
-	padding-top: 4px;
-	padding-left: 2px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	font-size: 13px;
-	color: #77787E;
-	text-align: left;
 }
 
-div#PointLightDiffuse {	
-	position: absolute;
-	top:30px;
+div#PointLightDiffuse {
+    top:30px;
 	left:630px;
-	padding-top: 4px;
-	padding-left: 2px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	font-size: 13px;
-	color: #77787E;
-	text-align: left;
 }
 
-div#PointLightColour {	
-	position: absolute;
+div#PointLightColour {
 	top:30px;
 	left:840px;
-	padding-top: 4px;
-	padding-left: 2px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	font-size: 13px;
-	color: #77787E;
-	text-align: left;
 }
 
-div#AmbientLightColour {	
-	position: absolute;
+div#AmbientLightColour {
 	top:30px;
 	left:1070px;
-	padding-top: 4px;
-	padding-left: 2px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	font-size: 13px;
-	color: #77787E;
-	text-align: left;
-}
-
-div#check {	
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight:bold;
-	font-size: 13px;
-	color: #77787E;
-	text-align: left;
 }
 
 input[type=text], textarea {
@@ -133,18 +166,4 @@ input[type=text], textarea {
   box-shadow: 0 0 5px #6187EA;
   border: 1px solid #646161;
   width: 150px; height: 23px;
-}
-
-input[type=button] {
-	padding:5px 15px;  border:0 none;
-	cursor:pointer;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	background-color: #4098d3;
-    color: #77787E;
- 	background-image: linear-gradient(to bottom, #F2F0F0, #D8D2D2);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#F2F0F0, endColorstr=#D8D2D2);
-}
-
-input[type="checkbox"] {
-
 }
