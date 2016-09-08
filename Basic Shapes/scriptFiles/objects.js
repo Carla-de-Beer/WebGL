@@ -24,8 +24,8 @@
 	var count = 0;
 
 	var axisO = 1;
-	var cubeSpeed = 3.0;
-	var tetraSpeed = 3.0;
+	var cubeSpeed = 4.5;
+	var tetraSpeed = 6.0;
 	var octoSpeed = 2.0;
 
 	// Array of angles: 0 = x; 1 = y; 3 = z
