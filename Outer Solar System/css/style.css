@@ -5,6 +5,11 @@ body {
 	background: white;
 }
 
+canvas, img {
+    display:block;
+    margin:1em auto;
+}
+
 p {
 	font-family: Helvetica, Arial, sans-serif;
 	font-weight:bold;

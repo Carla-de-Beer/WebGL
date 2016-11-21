@@ -167,7 +167,7 @@ function initBuffers(){
 	cubeVertexPositionBuffer.itemSize = 3;
 	cubeVertexPositionBuffer.numItems = 24;
 
-	var colors = [
+	colors = [
 		// Front face
 		0.5, 0.3, 0.7, 1.0,
 		1.0, 1.0, 1.0, 1.0,
@@ -229,7 +229,7 @@ function initBuffers(){
 
 	// --------------- Tetrahedron
 
-	var vertices = [
+	vertices = [
 		// Front face
 		0.0,  1.0,  0.0,
 		-1.0, -1.0,  1.0,
@@ -272,7 +272,7 @@ function initBuffers(){
 	tetrahedronVertexPositionBuffer.itemSize = 3;
 	tetrahedronVertexPositionBuffer.numItems = 12;
 
-	var colors = [
+	colors = [
 		// Front face
 		1.0, 0.0, 0.0, 1.0,
 		0.0, 1.0, 0.0, 1.0,
