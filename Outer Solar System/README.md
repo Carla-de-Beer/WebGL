@@ -1,6 +1,6 @@
 # Outer Solar System #
 
-The canvas contains a the Outer Solar System, and a means to navigate around the planets.
+The canvas contains the Outer Solar System, and a means to navigate around the planets.
 
 </br>
 <p align="center">
