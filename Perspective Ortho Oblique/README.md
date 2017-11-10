@@ -4,7 +4,7 @@ This project illustrates the difference between perspective, ortho and oblique v
 
 </br>
 <p align="center">
-  <img src="Images/screenShot-01.png" width="200px"/>
-  <img src="Images/screenShot-02.png" width="200px"/>
-  <img src="Images/screenShot-03.png" width="200px"/>
+  <img src="images/screenShot-01.png" width="250px"/>
+  <img src="images/screenShot-02.png" width="250px"/>
+  <img src="images/screenShot-03.png" width="250px"/>
 </p>
