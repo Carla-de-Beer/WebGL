@@ -12,7 +12,6 @@ function initGL(canvas) {
 	}
 }
 
-
 function getShader(gl, id) {
 	var shaderScript = document.getElementById(id);
 	if (!shaderScript) {
@@ -22,16 +21,16 @@ function getShader(gl, id) {
 	var str = "";
 	var k = shaderScript.firstChild;
 	while (k) {
-		if (k.nodeType == 3) {
+		if (k.nodeType === 3) {
 			str += k.textContent;
 		}
 		k = k.nextSibling;
 	}
 
 	var shader;
-	if (shaderScript.type == "x-shader/x-fragment") {
+	if (shaderScript.type === "x-shader/x-fragment") {
 		shader = gl.createShader(gl.FRAGMENT_SHADER);
-	} else if (shaderScript.type == "x-shader/x-vertex") {
+	} else if (shaderScript.type === "x-shader/x-vertex") {
 		shader = gl.createShader(gl.VERTEX_SHADER);
 	} else {
 		return null;
@@ -89,12 +88,11 @@ function mvPushMatrix() {
 }
 
 function mvPopMatrix() {
-	if (mvMatrixStack.length == 0) {
+	if (mvMatrixStack.length === 0) {
 		throw "Invalid popMatrix!";
 	}
 	mvMatrix = mvMatrixStack.pop();
 }
-
 
 function setMatrixUniforms() {
 	gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, false, pMatrix);
@@ -105,7 +103,6 @@ function setMatrixUniforms() {
 	mat3.transpose(normalMatrix);
 	gl.uniformMatrix3fv(shaderProgram.nMatrixUniform, false, normalMatrix);
 }
-
 
 function degToRad(degrees) {
 	return degrees * Math.PI / 180;
@@ -118,18 +115,15 @@ var lastMouseY = null;
 var sphereRotationMatrix = mat4.create();
 mat4.identity(sphereRotationMatrix);
 
-
 function handleMouseDown(event) {
 	mouseDown = true;
 	lastMouseX = event.clientX;
 	lastMouseY = event.clientY;
 }
 
-
 function handleMouseUp(event) {
 	mouseDown = false;
 }
-
 
 function handleMouseMove(event) {
 	if (!mouseDown) {
@@ -188,7 +182,6 @@ function initBuffers() {
 			vertexPositionData.push(radius * z);
 		}
 	}
-
 
 	var indexData = [];
 	for (var latNumber = 0; latNumber < latitudeBands; latNumber++) {
@@ -282,12 +275,10 @@ function drawScene() {
 	gl.drawElements(gl.TRIANGLES, sphereVertexIndexBuffer.numItems, gl.UNSIGNED_SHORT, 0);
 }
 
-
 function tick() {
 	requestAnimFrame(tick);
 	drawScene();
 }
-
 
 function webGLStart() {
 	var canvas = document.getElementById("gl-canvas");
