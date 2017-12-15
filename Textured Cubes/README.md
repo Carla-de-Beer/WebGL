@@ -1,6 +1,6 @@
 # Textured Cubes #
 
-Examples of using different textured surfaces to clad a cube in WEBGL.
+Examples of different textured surfaces applied to a cube in WEBGL.
 
 
 * Cube 1: Textured cube: A simple textured surface applied to a cube.
