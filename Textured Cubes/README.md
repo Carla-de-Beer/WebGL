@@ -9,7 +9,7 @@ Examples of using different textured surfaces to clad a cube in WEBGL.
 
 </br>
 <p align="center">
-  <img src="images/screenShot-01.png" width="350px"/>
-  <img src="images/screenShot-02.png" width="350px"/>
-  <img src="images/screenShot-03.png" width="350px"/>
+  <img src="Images/screenShot-01.png" width="350px"/>
+  <img src="Images/screenShot-02.png" width="350px"/>
+  <img src="Images/screenShot-03.png" width="350px"/>
 </p>
