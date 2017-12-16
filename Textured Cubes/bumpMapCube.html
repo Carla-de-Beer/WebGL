@@ -76,34 +76,31 @@
 		}
     
 		void main(void) {
-		
-		vec3 N = vNormal;
-		N = bump_map(N);
-		
-		vec4 ambient = vec4(0.01, 0.01, 0.2, 1.0); 
-		vec4 light_spec = vec4(0.1, 0.1, 0.1, 1.0); 
-		vec4 light_diffuse = vec4(1.0, 1.0, 1.0, 1.0);
-		vec3 test_light = vec3(0.0,0.0,light_z); 
-		vec3 light_position = vec3(mouse.xy, light_z); 
-		
-		vec3 view = vPosition;
-		
-		vec3 L_m = normalize(light_position - view);
-		
-		vec4 md = diffuse_material;
-		vec4 ms = vec4(0.1,0.1,0.1,1.0);        
-		
-		// Diffuse
-		float Idiff = max(dot(N,L_m), 0.0);
-		Idiff = clamp(Idiff, 0.0, 1.0);
-		
-		// Specular
-		vec3 R_m = reflect(-L_m, N);
-		float Ispec = dot(R_m,view);      // calculate Phong specular intensity, Ispec
-		Ispec = 0.0;
-		
-		vec4 combination = (Idiff * light_diffuse * md) + (Ispec * light_spec * ms) + ambient;
-		gl_FragColor = combination;
+            vec3 N = vNormal;
+            N = bump_map(N);
+
+            vec4 ambient = vec4(0.01, 0.01, 0.2, 1.0);
+            vec4 light_spec = vec4(0.1, 0.1, 0.1, 1.0);
+            vec4 light_diffuse = vec4(1.0, 1.0, 1.0, 1.0);
+            vec3 test_light = vec3(0.0,0.0,light_z);
+            vec3 light_position = vec3(mouse.xy, light_z);
+
+            vec3 view = vPosition;
+            vec3 L_m = normalize(light_position - view);
+            vec4 md = diffuse_material;
+            vec4 ms = vec4(0.1,0.1,0.1,1.0);
+
+            // Diffuse
+            float Idiff = max(dot(N,L_m), 0.0);
+            Idiff = clamp(Idiff, 0.0, 1.0);
+
+            // Specular
+            vec3 R_m = reflect(-L_m, N);
+            float Ispec = dot(R_m,view);      // calculate Phong specular intensity, Ispec
+            Ispec = 0.0;
+
+            vec4 combination = (Idiff * light_diffuse * md) + (Ispec * light_spec * ms) + ambient;
+            gl_FragColor = combination;
 		}
     </script>
     
@@ -116,8 +113,6 @@
    <script type="text/javascript">	
    		
 		var light_z = 2;
-		var offset_x = 0.01;
-		var offset_y = 0.01;
 		var rho = 0;
 		var bump_scale = 29.9;
 		var delta_s = 0.005;
@@ -149,16 +144,16 @@
 			var str = "";
 			var k = shaderScript.firstChild;
 			while (k) {
-				if (k.nodeType == 3) {
+				if (k.nodeType === 3) {
 					str += k.textContent;
 				}
 				k = k.nextSibling;
 			}
 		
 			var shader;
-			if (shaderScript.type == "x-shader/x-fragment") {
+			if (shaderScript.type === "x-shader/x-fragment") {
 				shader = gl.createShader(gl.FRAGMENT_SHADER);
-			} else if (shaderScript.type == "x-shader/x-vertex") {
+			} else if (shaderScript.type === "x-shader/x-vertex") {
 				shader = gl.createShader(gl.VERTEX_SHADER);
 			} else {
 				return null;
@@ -225,7 +220,7 @@
 		}
 		
 		function mvPopMatrix() {
-			if (mvMatrixStack.length == 0) {
+			if (mvMatrixStack.length === 0) {
 				throw "Invalid popMatrix!";
 			}
 			mvMatrix = mvMatrixStack.pop();
@@ -255,7 +250,7 @@
 			surfaceTexture.image = new Image();
 			surfaceTexture.image.onload = function() {
 				handleLoadedTexture(surfaceTexture)
-			}
+			};
 			surfaceTexture.image.src = src;  
 		}	
 		
@@ -269,10 +264,7 @@
 		}	
 		
 		// ------------------------------------------------------------------- InitBuffers
-		
-		var squareVertexPositionBuffer;
-		var squareVertexTextureCoordBuffer;
-		var squareVertexIndexBuffer;
+
 		
 		var cubeVertexPositionBuffer;
 		var cubeVertexTextureCoordBuffer;
@@ -285,42 +277,42 @@
 			cubeVertexPositionBuffer = gl.createBuffer(); 
 			gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexPositionBuffer); 
 			
-			vertices = [ 
-			// Front face
-			-1.0 , -1.0, 1.0 , 
-			1.0 , -1.0 , 1.0 , 
-			1.0 , 1.0 , 1.0 , 
-			-1.0 , 1.0 , 1.0 , 
-			
-			// Back face 
-			-1.0 , -1.0, -1.0 , 
-			-1.0 , 1.0 , -1.0 , 
-			1.0 , 1.0 , -1.0 , 
-			1.0 , -1.0 , -1.0 , 
-			
-			// Top face 
-			-1.0 , 1.0 , -1.0 , 
-			-1.0 , 1.0 , 1.0 , 
-			1.0 , 1.0 , 1.0 , 
-			1.0 , 1.0 , -1.0 , 
-			
-			// Bottom face 
-			-1.0 , -1.0, -1.0 , 
-			1.0 , -1.0 , -1.0 , 
-			1.0 , -1.0 , 1.0 , 
-			-1.0 , -1.0, 1.0 , 
-			
-			// Right face 
-			1.0 , -1.0 , -1.0 , 
-			1.0 , 1.0 , -1.0 , 
-			1.0 , 1.0 , 1.0 , 
-			1.0 , -1.0 , 1.0 , 
-			
-			// Left face 
-			-1.0 , -1.0, -1.0 , 
-			-1.0 , -1.0, 1.0 , 
-			-1.0 , 1.0 , 1.0 , 
-			-1.0 , 1.0 , -1.0 , 
+			var vertices = [
+				// Front face
+				-1.0, -1.0, 1.0,
+				1.0, -1.0, 1.0,
+				1.0, 1.0, 1.0,
+				-1.0, 1.0, 1.0,
+
+				// Back face
+				-1.0, -1.0, -1.0,
+				-1.0, 1.0, -1.0,
+				1.0, 1.0, -1.0,
+				1.0, -1.0, -1.0,
+
+				// Top face
+				-1.0, 1.0, -1.0,
+				-1.0, 1.0, 1.0,
+				1.0, 1.0, 1.0,
+				1.0, 1.0, -1.0,
+
+				// Bottom face
+				-1.0, -1.0, -1.0,
+				1.0, -1.0, -1.0,
+				1.0, -1.0, 1.0,
+				-1.0, -1.0, 1.0,
+
+				// Right face
+				1.0, -1.0, -1.0,
+				1.0, 1.0, -1.0,
+				1.0, 1.0, 1.0,
+				1.0, -1.0, 1.0,
+
+				// Left face
+				-1.0, -1.0, -1.0,
+				-1.0, -1.0, 1.0,
+				-1.0, 1.0, 1.0,
+				-1.0, 1.0, -1.0
 			]; 
 			
 			gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
@@ -330,13 +322,13 @@
 			cubeVertexIndexBuffer = gl.createBuffer(); 
 			gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubeVertexIndexBuffer); 
 			
-			var cubeVertexIndices = [ 
-			0, 1, 2, 0, 2, 3, 		// Front face 
-			4, 5, 6, 4, 6, 7, 		// Back face 
-			8, 9, 10, 8, 10, 11, 	// Top face 
-			12, 13, 14, 12, 14, 15, // Bottom face 
-			16, 17, 18, 16, 18, 19, // Right face 
-			20, 21, 22, 20, 22, 23 	// Left face 
+			var cubeVertexIndices = [
+				0, 1, 2, 0, 2, 3, 		// Front face
+				4, 5, 6, 4, 6, 7, 		// Back face
+				8, 9, 10, 8, 10, 11, 	// Top face
+				12, 13, 14, 12, 14, 15, // Bottom face
+				16, 17, 18, 16, 18, 19, // Right face
+				20, 21, 22, 20, 22, 23 	// Left face
 			]; 
 			
 			gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(cubeVertexIndices), gl.STATIC_DRAW);
@@ -346,39 +338,39 @@
 			cubeVertexTextureCoordBuffer = gl.createBuffer(); 
 			gl.bindBuffer(gl.ARRAY_BUFFER, cubeVertexTextureCoordBuffer);
 			
-			var textureCoords = [ 
-			// Front face 
-			0.0 , 0.0 , 
-			0.25 , 0.0 , 
-			0.25 , 0.25 , 
-			0.0 , 0.25 , 
-			
-			// Back face 
-			0.0 , 0.0 , 
-			0.25 , 0.0 , 
-			0.25 , 0.25 , 
-			0.0 , 0.25 , 
-			// Top face 
-			0.0 , 0.0 , 
-			0.25 , 0.0 , 
-			0.25 , 0.25 , 
-			0.0 , 0.25 ,  
-			// Bottom face 
-			0.0 , 0.0 , 
-			0.25 , 0.0 , 
-			0.25 , 0.25 , 
-			0.0 , 0.25 , 
-			
-			// Right face 
-			0.0 , 0.0 , 
-			0.25 , 0.0 , 
-			0.25 , 0.25 , 
-			0.0 , 0.25 , 
-			// Left face 
-			0.0 , 0.0 , 
-			0.25 , 0.0 , 
-			0.25 , 0.25 , 
-			0.0 , 0.25 , 
+			var textureCoords = [
+				// Front face
+				0.0, 0.0,
+				0.25, 0.0,
+				0.25, 0.25,
+				0.0, 0.25,
+
+				// Back face
+				0.0, 0.0,
+				0.25, 0.0,
+				0.25, 0.25,
+				0.0, 0.25,
+				// Top face
+				0.0, 0.0,
+				0.25, 0.0,
+				0.25, 0.25,
+				0.0, 0.25,
+				// Bottom face
+				0.0, 0.0,
+				0.25, 0.0,
+				0.25, 0.25,
+				0.0, 0.25,
+
+				// Right face
+				0.0, 0.0,
+				0.25, 0.0,
+				0.25, 0.25,
+				0.0, 0.25,
+				// Left face
+				0.0, 0.0,
+				0.25, 0.0,
+				0.25, 0.25,
+				0.0, 0.25
 			]; 
 			
 			gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(textureCoords), gl.STATIC_DRAW);
@@ -391,10 +383,8 @@
 		var yRot = 0; 
 		var zRot = 0; 
 		
-		function drawScene() {            
-		
-			gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);				
-			
+		function drawScene() {
+			gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
 			gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 			
 			mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);	
@@ -403,7 +393,6 @@
 			mvPushMatrix();
 			
 			mat4.translate(mvMatrix, [0.0, 0.0, -5.0]);
-	
 			mat4.rotate(mvMatrix, degToRad(xRot), [1, 0, 0]);
 			mat4.rotate(mvMatrix, degToRad(yRot), [0, 1, 0]);
 			mat4.rotate(mvMatrix, degToRad(zRot), [0, 0, 1]);
@@ -439,7 +428,7 @@
 		
 		function animate() { 
 			var timeNow = new Date().getTime(); 
-			if (prevTime != 0) { 
+			if (prevTime !== 0) {
 				var elapsed = timeNow - prevTime ; 
 				xRot += (90 * elapsed ) / 7000.0; 
 				yRot += (90 * elapsed ) / 7000.0; 
